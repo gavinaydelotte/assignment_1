@@ -1,0 +1,17 @@
+1. for the second moving averge, all i did was add a second sidebar slider **short_ma = st.sidebar.slider("Short Moving Average Window", min_value=1, max_value=100, value=20, step=1)
+long_ma = st.sidebar.slider("Long Moving Average Window", min_value=1, max_value=200, value=50, step=1)**. Then for the actual calc, I did the same thing for df["MA"] into long and short MA. Lastly, I changed the plot to show the MA_long values **fig = px.line(df, x=df.index, y=["Close", "Short MA", "Long MA"], labels={"x": "Date", "value": "Price"})**. I am not super savvy with stocks and dont really understand the terminology but I think what I did is correct. 
+
+2. I would say the demo was easier to add the MA to becuse there was less actual code to change. The demo was also easier to understand because it was more visual and interactive. The stock analysis code had more lines which made it harder because there was just more linked together. The autofill feature definitely made it easier, however things still broke a bit, mainly I would forget to change tab 2, which doesnt even have moving averages, but i guess it ran the whole sidebar together so it still needed a long_ma argument in the code. I changed it to        
+ for symbol in tickers:
+            with st.spinner(f"Fetching data for {symbol}..."):
+                stock = load_stock(symbol, start_date, end_date, ma_window, long_ma_window)
+
+3. The class made me choose where to calculate the second moving average, so I put it in Stock next to the first one. I added it as an optional setting and kept the old MA column so existing code would still work. The downside is that moving either slider downloads the data again, but I kept it that way because it felt simpler.
+
+4. Probably would rather start from my version, because I am more familiar with it. There is also more spots to insert code, and there are plenty of seperate blocks to implement a feature, but the demo is all under one long block and I feel like it would be just get all convoluted.
+
+
+Write-up -   I chose to compare Google and NVIDIA. They intersected many times over the past six months, such as April 23rd, June 1st, June 5th, and so on. Some of these days were from Google stock rising and NVIDIA falling, and some were from NVIDIA stock rising and Google falling. I am not incredibly stock savvy, but I assume this volatility of each affected returns differently each day, however as these are both very strong stocks today they still generated income for those with shares. 
+I have put the screenshot of the graph in the file MA_NVDA_GOOG.png
+
+ 
